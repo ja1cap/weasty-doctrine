@@ -1,12 +1,12 @@
 <?php
-namespace Weasty\Bundle\DoctrineBundle\Twig;
+namespace Weasty\Doctrine\Twig;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
  * Class CollectionExtension
- * @package Weasty\Bundle\DoctrineBundle\Twig
+ * @package Weasty\Doctrine\Twig
  */
 class CollectionExtension extends \Twig_Extension {
 
