@@ -88,7 +88,11 @@ abstract class AbstractRepository extends EntityRepository {
                         $joinPart->getJoinType(), $join, $joinPart->getAlias(), Expr\Join::ON, $joinPart->getCondition(), $joinPart->getIndexBy()
                     );
 
-                    $qb->add('join', array($rootAlias => $join), true);
+                    /**
+                     * @var \Doctrine\ORM\Query\Expr\Base $dqlPart
+                     */
+                    $dqlPart = array($rootAlias => $join);
+                    $qb->add('join', $dqlPart, true);
 
 
                 }
