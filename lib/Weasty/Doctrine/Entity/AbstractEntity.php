@@ -25,18 +25,6 @@ abstract class AbstractEntity implements EntityInterface {
     }
 
     /**
-     * @return array
-     */
-    public function toArray()
-    {
-        // TODO: Implement toArray() method.
-        return array(
-            'id' => $this->getId(),
-            'name' => $this->getName(),
-        );
-    }
-
-    /**
      * @var array
      */
     private $temps = array();

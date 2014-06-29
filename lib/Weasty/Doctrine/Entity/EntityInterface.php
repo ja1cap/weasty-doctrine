@@ -17,9 +17,4 @@ interface EntityInterface extends \ArrayAccess {
      */
     public function getIdentifier();
 
-    /**
-     * @return array
-     */
-    public function toArray();
-
 } 
