@@ -17,4 +17,9 @@ interface EntityInterface extends \ArrayAccess {
      */
     public function getIdentifier();
 
-} 
+    /**
+     * @return string
+     */
+    public function getIdentifierField();
+
+}

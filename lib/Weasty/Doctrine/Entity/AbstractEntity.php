@@ -25,6 +25,14 @@ abstract class AbstractEntity implements EntityInterface {
     }
 
     /**
+     * @return string
+     */
+    public function getIdentifierField()
+    {
+        return 'id';
+    }
+
+    /**
      * @var array
      */
     private $temps = array();
