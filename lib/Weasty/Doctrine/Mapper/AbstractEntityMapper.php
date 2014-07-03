@@ -12,7 +12,7 @@ use Weasty\Resource\Exception\NotDefinedPropertyException;
 abstract class AbstractEntityMapper {
 
     /**
-     * @var ObjectManager
+     * @var ObjectManager|object
      */
     protected $entityManager;
 
@@ -38,15 +38,15 @@ abstract class AbstractEntityMapper {
     }
 
     /**
-     * @param \Doctrine\Common\Persistence\ObjectManager $entityManager
+     * @param \Doctrine\Common\Persistence\ObjectManager|object $entityManager
      */
-    public function setEntityManager(ObjectManager $entityManager)
+    public function setEntityManager($entityManager)
     {
         $this->entityManager = $entityManager;
     }
 
     /**
-     * @return \Doctrine\Common\Persistence\ObjectManager
+     * @return \Doctrine\Common\Persistence\ObjectManager|object
      * @throws \Weasty\Resource\Exception\NotDefinedPropertyException
      */
     protected function getEntityManager()
