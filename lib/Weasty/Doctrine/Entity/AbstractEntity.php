@@ -10,6 +10,17 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 abstract class AbstractEntity implements EntityInterface {
 
     /**
+     * @return array
+     */
+    public function getRouteParameters(){
+
+        return [
+            'id' => $this->getId(),
+        ];
+
+    }
+
+    /**
      * @return string
      */
     public function getName(){
