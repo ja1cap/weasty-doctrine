@@ -2,12 +2,13 @@
 namespace Weasty\Doctrine\Entity;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Weasty\Resource\Routing\RoutableInterface;
 
 /**
  * Class AbstractEntity
  * @package Weasty\Doctrine\Entity
  */
-abstract class AbstractEntity implements EntityInterface {
+abstract class AbstractEntity implements EntityInterface, RoutableInterface {
 
     /**
      * @return array
