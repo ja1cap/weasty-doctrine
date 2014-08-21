@@ -58,7 +58,7 @@ class EntitySerializer {
 
             $reflectionProperty = $this->getReflectionProperty($metadata, $field);
             $value = $reflectionProperty->getValue($entity);
-            $field = strtolower(preg_replace('~(?<=\\w)([A-Z])~', '_$1', $field));
+            //$field = strtolower(preg_replace('~(?<=\\w)([A-Z])~', '_$1', $field));
 
             if ($value instanceof \DateTime) {
                 // We cast DateTime to array to keep consistency with array result
