@@ -1,7 +1,8 @@
 <?php
 namespace Weasty\Doctrine;
+
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\AbstractManagerRegistry;
 use Doctrine\ORM\Mapping\ClassMetadata;
 
 /**
@@ -10,11 +11,10 @@ use Doctrine\ORM\Mapping\ClassMetadata;
  */
 class EntitySerializer {
 
-
     /**
-     * @var \Doctrine\ORM\EntityManager
+     * @var \Doctrine\Common\Persistence\AbstractManagerRegistry
      */
-    protected $_em;
+    protected $_managerRegistry;
 
     /**
      * @var int
@@ -26,25 +26,18 @@ class EntitySerializer {
      */
     protected $_maxRecursionDepth = 0;
 
-    public function __construct(EntityManager $em)
+    public function __construct(AbstractManagerRegistry $_managerRegistry)
     {
-        $this->setEntityManager($em);
+        $this->_managerRegistry = $_managerRegistry;
     }
 
     /**
-     *
+     * @param $class
      * @return \Doctrine\ORM\EntityManager
      */
-    public function getEntityManager()
+    public function getEntityManager($class = null)
     {
-        return $this->_em;
-    }
-
-    public function setEntityManager(EntityManager $em)
-    {
-        $this->_em = $em;
-
-        return $this;
+        return $class ? $this->_managerRegistry->getManagerForClass($class) :$this->_managerRegistry->getManager();
     }
 
     protected function _serializeEntity($entity)
@@ -116,7 +109,7 @@ class EntitySerializer {
      */
     private function getEntityMetaData($entity){
         $className = get_class($entity);
-        $metadata = $this->_em->getClassMetadata($className);
+        $metadata = $this->getEntityManager($className)->getClassMetadata($className);
         return $metadata;
     }
 
