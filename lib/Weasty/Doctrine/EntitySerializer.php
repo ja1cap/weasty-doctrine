@@ -3,6 +3,7 @@ namespace Weasty\Doctrine;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\AbstractManagerRegistry;
+use Doctrine\Common\Proxy\Proxy;
 use Doctrine\ORM\Mapping\ClassMetadata;
 
 /**
@@ -42,6 +43,10 @@ class EntitySerializer {
 
     protected function _serializeEntity($entity)
     {
+
+        if($entity instanceof Proxy){
+            $entity->__load();
+        }
 
         $metadata = $this->getEntityMetaData($entity);
 
