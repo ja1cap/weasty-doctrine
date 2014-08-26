@@ -312,4 +312,12 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
         }
     }
 
+    /**
+     * @return string
+     */
+    function __toString()
+    {
+        return (string)$this->getIdentifier();
+    }
+
 }
