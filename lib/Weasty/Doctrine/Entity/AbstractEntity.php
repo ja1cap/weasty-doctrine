@@ -201,7 +201,7 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return realpath(__DIR__.'/../../../../web/'.$this->getUploadDirName());
+        return realpath(__DIR__.'/../../../../../../../web/'.$this->getUploadDirName());
     }
 
     /**
