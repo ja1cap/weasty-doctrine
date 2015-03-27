@@ -22,11 +22,20 @@ abstract class AbstractEntityMapper {
     protected $entity;
 
     /**
-     * @param \Weasty\Doctrine\Entity\EntityInterface $entity
+     * @param \Weasty\Doctrine\Entity\EntityInterface|null $entity
      */
-    function __construct(EntityInterface $entity)
+    function __construct(EntityInterface $entity = null)
     {
         $this->entity = $entity;
+    }
+
+    /**
+     * @param EntityInterface $entity
+     * @return $this
+     */
+    public function setEntity( $entity ) {
+        $this->entity = $entity;
+        return $this;
     }
 
     /**
