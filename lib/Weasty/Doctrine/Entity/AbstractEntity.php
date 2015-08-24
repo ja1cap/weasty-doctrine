@@ -25,7 +25,18 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
      * @return string
      */
     public function getName(){
-        return (string)$this;
+        if(property_exists($this, 'name')){
+            return $this->{'name'};
+        }
+        elseif(property_exists($this, 'title')){
+            return $this->{'title'};
+        }
+        elseif(method_exists($this, 'getTitle')){
+            return $this->getTitle();
+        }
+        else {
+            return (string)$this->getIdentifier();
+        }
     }
 
     /**
@@ -45,28 +56,33 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
     }
 
     /**
+     * @deprecated
      * @var array
      */
     private $temps = array();
 
     /**
+     * @deprecated
      * @var array
      */
     protected $files_names = array();
 
     /**
+     * @deprecated
      * @var array
      */
     protected $files = array();
 
     /**
-     * @return array]
+     * @deprecated
+     * @return array
      */
     protected function getFilesNames(){
         return $this->files_names;
     }
 
     /**
+     * @deprecated
      * @return array
      */
     protected function getFiles(){
@@ -75,6 +91,7 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
 
     /**
      * Sets file.
+     * @deprecated
      * @param $file_name_field
      * @param UploadedFile $file
      * @return $this
@@ -94,6 +111,7 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
     }
 
     /**
+     * @deprecated
      * @param $file_name_field
      * @return UploadedFile|null
      */
@@ -102,6 +120,10 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
         return isset($this->files[$file_name_field]) ? $this->files[$file_name_field] : null;
     }
 
+    /**
+     * @deprecated
+     * @return $this
+     */
     public function preUpload()
     {
 
@@ -126,6 +148,10 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
 
     }
 
+    /**
+     * @deprecated
+     * @return $this
+     */
     public function upload()
     {
 
@@ -161,6 +187,10 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
 
     }
 
+    /**
+     * @deprecated
+     * @return $this
+     */
     public function removeUpload()
     {
         foreach($this->getFilesNames() as $file_name){
@@ -173,6 +203,7 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
     }
 
     /**
+     * @deprecated
      * @param $file_name
      * @return null|string
      */
@@ -184,6 +215,7 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
     }
 
     /**
+     * @deprecated
      * @param $file_name
      * @return null|string
      */
@@ -195,16 +227,17 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
     }
 
     /**
+     * @deprecated
+     * @throws \Exception
      * @return string
      */
     public function getUploadDirPath()
     {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return realpath(__DIR__.'/../../../../../../../web/'.$this->getUploadDirName());
+        throw new \Exception('File upload using entity does not supported any more');
     }
 
     /**
+     * @deprecated
      * @return string
      */
     protected function getUploadDirName()
@@ -317,7 +350,7 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
      */
     function __toString()
     {
-        return (string)$this->getIdentifier();
+        return (string)$this->getName();
     }
 
 }
