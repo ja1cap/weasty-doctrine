@@ -26,7 +26,7 @@ abstract class AbstractEntityMapper {
      */
     function __construct(EntityInterface $entity = null)
     {
-        $this->entity = $entity;
+        $this->setEntity($entity);
     }
 
     /**
