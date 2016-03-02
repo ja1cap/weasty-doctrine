@@ -1,11 +1,11 @@
 <?php
-namespace Waesty\Doctrine\ORM\Query;
+namespace Weasty\Doctrine\ORM\Query;
 
 use Doctrine\ORM\Query\Expr;
 
 /**
  * Class ExpressionsBuilder
- * @package Waesty\Bundle\DoctrineBundle\ORM\Query
+ * @package Weasty\Bundle\DoctrineBundle\ORM\Query
  */
 class ExpressionsBuilder extends Expr
 {

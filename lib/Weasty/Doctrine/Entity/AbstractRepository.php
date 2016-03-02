@@ -5,7 +5,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Query\Expr;
-use Waesty\Doctrine\ORM\Query\ExpressionsBuilder;
+use Weasty\Doctrine\ORM\Query\ExpressionsBuilder;
 
 /**
  * Class AbstractRepository
@@ -140,7 +140,7 @@ abstract class AbstractRepository extends EntityRepository {
 
     /**
      * @param \Doctrine\ORM\QueryBuilder $qb
-     * @param \Waesty\Doctrine\ORM\Query\ExpressionsBuilder $expr
+     * @param \Weasty\Doctrine\ORM\Query\ExpressionsBuilder $expr
      * @return \Doctrine\ORM\QueryBuilder
      */
     public function applyExpressions(QueryBuilder $qb, ExpressionsBuilder $expr = null){
@@ -206,7 +206,7 @@ abstract class AbstractRepository extends EntityRepository {
     }
 
     /**
-     * @param \Waesty\Doctrine\ORM\Query\ExpressionsBuilder $expr
+     * @param \Weasty\Doctrine\ORM\Query\ExpressionsBuilder $expr
      * @return int
      */
     public function getAmount(ExpressionsBuilder $expr = null){
