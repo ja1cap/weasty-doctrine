@@ -4,7 +4,11 @@
     "description": "Weasty Doctrine",
     "license": "MIT",
     "authors": [
-        {"name": "ja1cap", "email": "ja1cap@me.com"}
+        {
+            "name": "ja1cap",
+            "email": "ja1cap@weasty.com",
+            "homepage": "https://www.weasty.com"
+        }
     ],
     "require": {
         "php": ">=5.3.2",
