@@ -90,37 +90,6 @@ abstract class AbstractEntity implements EntityInterface, RoutableInterface {
     }
 
     /**
-     * Sets file.
-     * @deprecated
-     * @param $file_name_field
-     * @param UploadedFile $file
-     * @return $this
-     */
-    public function setFile($file_name_field, UploadedFile $file = null)
-    {
-        $file_name = $this->offsetGet($file_name_field);
-        $this->files[$file_name_field] = $file;
-        $this->offsetSet($file_name_field, $file ? $file->getClientOriginalName() : null);
-        // check if we have an old image path
-        if ($file_name) {
-            // store the old name to delete after the update
-            $this->temps[$file_name] = $file_name;
-            $this->offsetSet($file_name_field, null);
-        }
-        return $this;
-    }
-
-    /**
-     * @deprecated
-     * @param $file_name_field
-     * @return UploadedFile|null
-     */
-    public function getFile($file_name_field)
-    {
-        return isset($this->files[$file_name_field]) ? $this->files[$file_name_field] : null;
-    }
-
-    /**
      * @deprecated
      * @return $this
      */
