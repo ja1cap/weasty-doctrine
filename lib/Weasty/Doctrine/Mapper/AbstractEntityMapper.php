@@ -76,7 +76,7 @@ abstract class AbstractEntityMapper {
         if(method_exists($this, $method)){
             return $this->$method();
         }
-        return $this->getEntity()->offsetGet($name);
+        return $this->getEntity() ? $this->getEntity()->offsetGet($name) : null;
     }
 
     /**
@@ -89,7 +89,9 @@ abstract class AbstractEntityMapper {
         if(method_exists($this, $method)){
             $this->$method($value);
         }
-        $this->getEntity()->offsetSet($name, $value);
+        if($entity = $this->getEntity()){
+            $entity->offsetSet($name, $value);
+        }
     }
 
 } 
